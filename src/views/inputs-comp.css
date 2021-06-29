@@ -1,0 +1,13 @@
+
+.inputs-text {
+    display:flex;
+    display:-o-flex;
+    flex-wrap:wrap;
+    margin:25px 0 0;
+    -webkit-animation:op .4s ease-in-out;
+    animation:op .4s ease-in-out
+}
+
+.inputs-text .input:nth-child(2n){
+    margin-right:0
+}

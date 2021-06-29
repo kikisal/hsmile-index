@@ -1,0 +1,194 @@
+body,html{
+    height:100%
+}
+body{
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen,Ubuntu,Cantarell,"Open Sans","Helvetica Neue",sans-serif;
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    -moz-box-sizing:border-box;
+    -o-box-sizing:border-box;
+    -ms-box-sizing:border-box;
+    background-image:url(http://127.0.0.1/public/assets/pix/img/backgrounds/cube.png);
+    background-color:#36393f;
+    background-repeat:repeat;
+    color:#fff;
+    line-height:16px;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    overflow:hidden;
+    -webkit-user-select:none;
+    -ms-user-select:none;
+    user-select:none
+}
+.text{
+    margin:16px 0
+}
+.text.big{
+    font-size:2em
+}
+.text.mini{
+    font-size:14px
+}
+input.disable{
+    opacity:.8;
+    pointer-events:none
+}
+input{
+    padding:10px 10px 10px 35px;
+    outline:none;
+    margin:0 12px 0 0;
+    font-size:17px;
+    letter-spacing:.5px;
+    box-shadow:0 0 0 3px rgba(0,0,0,.29);
+    border:1px solid transparent;
+    border-radius:2px;
+    background:#313238;
+    color:#d2d2d2;
+    width:100%;
+    box-sizing:border-box;
+    -moz-box-sizing:border-box;
+    -o-box-sizing:border-box;
+    -ms-box-sizing:border-box
+}
+input.error{
+    box-shadow:0 0 0 3px rgba(255,59,38,.63)
+}
+span.small{
+    font-size:11px;
+    font-weight:lighter;
+    text-transform:none
+}
+.error{
+    color:rgba(255,59,38,.63)
+}
+.input{
+    position:relative;
+    margin:0 13px 10px 0;
+    width:243px
+}
+
+a{
+    text-decoration:none;
+    color:#00b3d6
+}
+a:hover{
+    text-decoration:underline
+}
+.buttons-wrapper{
+    margin:14px 0
+}
+button.disable{
+    opacity:.6;
+    cursor:inherit
+}
+button{
+    width:100%;
+    padding:12px 0;
+    background:#657dd4;
+    color:#fff;
+    font-weight:700;
+    font-size:14px;
+    letter-spacing:.4px;
+    border:none;
+    outline:none;
+    cursor:pointer;
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen,Ubuntu,Cantarell,"Open Sans","Helvetica Neue",sans-serif
+}
+button:hover:not(.disable){
+    background:#667bc5
+}
+div.m-right{
+    margin-right:13px
+}
+.icon{
+    position:absolute;
+    width:13px;
+    height:16px;
+    background-repeat:no-repeat;
+    background-position:50%
+}
+.input-icon{
+    left:12px;
+    top:42px
+}
+.icon.lock{
+    background-image:url(http://127.0.0.1/public/assets/pix/img/icons/lock.png);
+    top:44px
+}
+.icon.head{
+    width:18px;
+    left:9px;
+    height:19px;
+    background-image:url(http://127.0.0.1/public/assets/pix/img/icons/head.png)
+}
+.icon.email{
+    width:16px;
+    left:11px;
+    height:19px;
+    background-image:url(http://127.0.0.1/public/assets/pix/img/icons/email.png)
+}
+.label{
+    font-size:12px;
+    text-transform:uppercase;
+    margin:0 0 15px;
+    font-weight:700;
+    color:#a09c9c
+}
+.label.link a{
+    color:#3c77a9
+}
+@-webkit-keyframes IndexMov{
+    0%{
+        transform:translateY(5%)
+    }
+    to{
+        transform:translateY(0)
+    }
+}
+@keyframes IndexMov{
+    0%{
+        transform:translateY(5%)
+    }
+    to{
+        transform:translateY(0)
+    }
+}
+
+
+@-webkit-keyframes op{
+    0%{
+        opacity:0
+    }
+    25%{
+        opacity:.25
+    }
+    50%{
+        opacity:.5
+    }
+    75%{
+        opacity:.75
+    }
+    to{
+        opacity:1
+    }
+}
+@keyframes op{
+    0%{
+        opacity:0
+    }
+    25%{
+        opacity:.25
+    }
+    50%{
+        opacity:.5
+    }
+    75%{
+        opacity:.75
+    }
+    to{
+        opacity:1
+    }
+}
