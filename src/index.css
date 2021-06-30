@@ -1,7 +1,7 @@
 body,html{
     height:100%
 }
-body{
+body {
     font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen,Ubuntu,Cantarell,"Open Sans","Helvetica Neue",sans-serif;
     margin:0;
     padding:0;
@@ -9,7 +9,7 @@ body{
     -moz-box-sizing:border-box;
     -o-box-sizing:border-box;
     -ms-box-sizing:border-box;
-    background-image:url(http://127.0.0.1/public/assets/pix/img/backgrounds/cube.png);
+    background-image:url(http://146.59.128.52/public/assets/pix/img/backgrounds/cube.png);
     background-color:#36393f;
     background-repeat:repeat;
     color:#fff;
@@ -115,20 +115,20 @@ div.m-right{
     top:42px
 }
 .icon.lock{
-    background-image:url(http://127.0.0.1/public/assets/pix/img/icons/lock.png);
+    background-image:url(http://146.59.128.52/public/assets/pix/img/icons/lock.png);
     top:44px
 }
 .icon.head{
     width:18px;
     left:9px;
     height:19px;
-    background-image:url(http://127.0.0.1/public/assets/pix/img/icons/head.png)
+    background-image:url(http://146.59.128.52/public/assets/pix/img/icons/head.png)
 }
 .icon.email{
     width:16px;
     left:11px;
     height:19px;
-    background-image:url(http://127.0.0.1/public/assets/pix/img/icons/email.png)
+    background-image:url(http://146.59.128.52/public/assets/pix/img/icons/email.png)
 }
 .label{
     font-size:12px;

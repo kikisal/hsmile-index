@@ -21,6 +21,10 @@ export default class ButtonsWrapper extends React.Component {
         }
     }
 
+    getURI() {
+        return new URL(window.location.href).pathname;
+    }
+
     loginIn = () => {
         const {username, password} = this.
         props.inputWrapper.
@@ -28,6 +32,8 @@ export default class ButtonsWrapper extends React.Component {
         current.inputs;
         
         const { errorMessage } = this.props;
+        const uri = this.getURI();
+
        
         errorMessage.current.clear();
         
@@ -43,9 +49,7 @@ export default class ButtonsWrapper extends React.Component {
         {
 
             this.setState({disable_button: false}, () => {
-
-                errorMessage.current.handleMessage(TEXTS.FILL_UP_FIELDS);
-
+                errorMessage.current.handleMessage(TEXTS.FILL_UP_FIELDS, uri);
             });
 
             return;
@@ -57,7 +61,7 @@ export default class ButtonsWrapper extends React.Component {
         formData.append('pass', pass);
         
         
-       fetch(`${Config.API_SERVICE}/api/login`, {
+       fetch(`${Config.API_SERVICE}api/login`, {
             method : 'POST',
             body: formData,
      
@@ -67,23 +71,23 @@ export default class ButtonsWrapper extends React.Component {
                 
                 this.setState({disable_button: false}, () => {
                     if ( !('status' in e) ) {
-                        errorMessage.current.handleMessage(TEXTS.SOMETHING_WENT_WRONG);
+                        errorMessage.current.handleMessage(TEXTS.SOMETHING_WENT_WRONG, uri);
                     } else {
                         if ( e.status === 'success' )
                             window.location.reload();
                         else
-                            errorMessage.current.handleMessage(TEXTS.PASSWORD_OR_NAME_WRONG);
+                            errorMessage.current.handleMessage(TEXTS.PASSWORD_OR_NAME_WRONG, uri);
                     }    
                 });
                 
             }  ).catch(e => {
                 this.setState({disable_button: false}, () => {
-                    errorMessage.current.handleMessage(TEXTS.SOMETHING_WENT_WRONG);
+                    errorMessage.current.handleMessage(TEXTS.SOMETHING_WENT_WRONG, uri);
                 }); 
             })
         }).catch(e => {
             this.setState({disable_button: false}, () => {
-                errorMessage.current.handleMessage(TEXTS.SOMETHING_WENT_WRONG);
+                errorMessage.current.handleMessage(TEXTS.SOMETHING_WENT_WRONG, uri);
             });
         });
 
@@ -91,7 +95,146 @@ export default class ButtonsWrapper extends React.Component {
     }
 
     createAccount = () => {
-        console.log('CREATING ACCOUNT DIOMERDA....');   
+        const {username, email, password, password2} = this.
+        props.inputWrapper.
+        current.registerComponent.
+        current.inputs;
+
+        const { errorMessage } = this.props;
+        const uri = this.getURI();
+       
+        errorMessage.current.clear();
+        
+        
+        const [name, mail, pass, pass2] = [username.value, email.value, password.value, password2.value]; 
+
+
+        errorMessage.current.loading();
+
+        
+        this.setState({disable_button: true});
+
+        if ( name == '' || pass == '' )
+        {
+
+            this.setState({disable_button: false}, () => {
+
+                errorMessage.current.handleMessage(TEXTS.FILL_UP_FIELDS, uri);
+
+            });
+
+            return;
+        }
+
+
+        const formData = new FormData();
+        formData.append('user', name);
+        formData.append('mail', mail);
+        formData.append('pass', pass);
+        formData.append('pass2', pass2);
+
+        fetch(`${Config.API_SERVICE}api/register`, {
+            method : 'POST',
+            body: formData,
+
+        }).then(e => {
+
+            e.json().then( (e) => {
+                
+                this.setState({disable_button: false}, () => {
+                    if ( !('status' in e) ) {
+                        errorMessage.current.handleMessage(TEXTS.SOMETHING_WENT_WRONG, uri);
+                    } else {
+                        if ( e.status === 'success' )
+                            window.location.reload();
+                        else
+                        {
+                            if (!('message' in e))
+                                errorMessage.current.handleMessage(TEXTS.SOMETHING_WENT_WRONG, uri);
+                            else
+                                errorMessage.current.handleMessage(TEXTS.PASSWORD_OR_NAME_WRONG, uri);
+                        }
+                    }    
+                });
+                
+            }  ).catch(e => {
+                this.setState({disable_button: false}, () => {
+                    errorMessage.current.handleMessage(TEXTS.SOMETHING_WENT_WRONG, uri);
+                }); 
+            })
+        }).catch(e => {
+            this.setState({disable_button: false}, () => {
+                errorMessage.current.handleMessage(TEXTS.SOMETHING_WENT_WRONG, uri);
+            });
+        });
+
+    }
+    
+    recoveryPassword = () => {
+        const { email } = this.
+        props.inputWrapper.
+        current.recoveryComponent.
+        current.inputs;
+        
+        const { errorMessage } = this.props;
+        const uri = this.getURI();
+
+       
+        errorMessage.current.clear();
+        
+        const mail = email.value;
+
+        errorMessage.current.loading();
+
+        this.setState({disable_button: true});
+
+        if ( mail == '' )
+        {
+            this.setState({disable_button: false}, () => {
+                errorMessage.current.handleMessage(TEXTS.FILL_UP_FIELDS, uri);
+            });
+
+            return;
+        }
+
+
+        const formData = new FormData();
+        formData.append('mail', mail);
+        
+        fetch(`${Config.API_SERVICE}api/register`, {
+            method : 'POST',
+            body: formData,
+
+        }).then(e => {
+
+            e.json().then( (e) => {
+                
+                this.setState({disable_button: false}, () => {
+                    if ( !('status' in e) ) {
+                        errorMessage.current.handleMessage(TEXTS.SOMETHING_WENT_WRONG, uri);
+                    } else {
+                        if ( e.status === 'success' )
+                            window.location.reload();
+                        else
+                        {
+                            if (!('message' in e))
+                                errorMessage.current.handleMessage(TEXTS.SOMETHING_WENT_WRONG, uri);
+                            else
+                                errorMessage.current.handleMessage(TEXTS.PASSWORD_OR_NAME_WRONG, uri);
+                        }
+                    }    
+                });
+                
+            }  ).catch(e => {
+                this.setState({disable_button: false}, () => {
+                    errorMessage.current.handleMessage(TEXTS.SOMETHING_WENT_WRONG, uri);
+                }); 
+            })
+        }).catch(e => {
+            this.setState({disable_button: false}, () => {
+                errorMessage.current.handleMessage(TEXTS.SOMETHING_WENT_WRONG, uri);
+            });
+        });
     }
 
     componentDidMount() {
@@ -115,6 +258,11 @@ export default class ButtonsWrapper extends React.Component {
                     case 'register':
                         this.createAccount();
                         break;
+
+                    case 'recovery':
+                        this.recoveryPassword();
+                        break;
+
                 }
     
             }
@@ -134,13 +282,13 @@ export default class ButtonsWrapper extends React.Component {
                         <Button disable={this.state.disable_button} wrapper={this} onClick={this.loginIn} label='Accedi' />
                     </Route>
                     <Route path="/index" exact={true}>
-                        <Button wrapper={this} onClick={this.loginIn}  label='Accedi' />
+                        <Button disable={this.state.disable_button} wrapper={this} onClick={this.loginIn}  label='Accedi' />
                     </Route>
                     <Route exact={true} path="/register">
-                        <Button wrapper={this} onClick={this.createAccount} label='Registrati' />
+                        <Button disable={this.state.disable_button} wrapper={this} onClick={this.createAccount} label='Registrati' />
                     </Route>
                     <Route exact={true} path="/recovery">
-                        <Button wrapper={this} disable={true} label='Recupera' />
+                        <Button disable={this.state.disable_button} wrapper={this} onClick={this.recoveryPassword} label='Recupera' />
                     </Route>
                     
                 </Switch>

@@ -12,6 +12,8 @@ export default class InputWrapper extends React.Component {
     
         this.loginComponent = React.createRef();
         this.registerComponent = React.createRef();
+        this.recoveryComponent = React.createRef();
+        
     }
     
 
@@ -20,7 +22,7 @@ export default class InputWrapper extends React.Component {
         return (
             <Switch>
                 <Route path="/recovery">
-                    <RecoveryPasswordComponent />
+                    <RecoveryPasswordComponent ref={this.recoveryComponent} />
                 </Route>
                 <Route path="/register">
                     <RegisterComponent ref={this.registerComponent} />

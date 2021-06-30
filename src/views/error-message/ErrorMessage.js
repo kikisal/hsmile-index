@@ -10,14 +10,30 @@ export default class ErrorMessage extends Component {
             message: '',
             loading: false
         }
-        
     }
 
-    handleMessage(msg) {
-        this.setState({
-            message: msg,
-            loading: false
-        });
+    handleMessage(msg, page) {
+
+        if ( !this.page )
+            this.setState({
+                message: msg,
+                loading: false
+            });
+        else {
+            if ( page === this.page ) { 
+                this.setState({
+                    message: msg,
+                    loading: false
+                });
+    
+            } else {
+                
+                this.setState({
+                    loading: false
+                });
+            }
+        }
+        this.page = page;
     }
 
     loading() {
