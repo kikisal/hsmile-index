@@ -5,6 +5,7 @@ import WelcomeText from './welcome/WelcomeText';
 import OnlineUsers from './online-users/OnlineUsers';
 import ButtonsWrapper from './buttons-wrapper/ButtonsWrapper';
 import InputWrapper from './inputs-wrapper/InputWrapper';
+import ErrorMessage from './error-message/ErrorMessage';
 
 export default class LoginBox extends React.Component {
 
@@ -12,11 +13,9 @@ export default class LoginBox extends React.Component {
         super(props);
         this.welcomeTextWidget = React.createRef();
         this.inputWrapper = React.createRef();
+        this.errorMessage = React.createRef();
     }
 
-    componentDidMount() {
-        
-    }
 
     render() {
         return (
@@ -24,10 +23,12 @@ export default class LoginBox extends React.Component {
                 <div className="item login">
                     <div className="login-box">
                         <Logo />
+                        
                         <WelcomeText ref={this.welcomeTextWidget}  />
                         <OnlineUsers />
+                        <ErrorMessage ref={this.errorMessage} />
                         <InputWrapper ref={this.inputWrapper} />
-                        <ButtonsWrapper inputWrapper={this.inputWrapper} />
+                        <ButtonsWrapper errorMessage={this.errorMessage} inputWrapper={this.inputWrapper} />
                     </div>
                 </div>
             </div>

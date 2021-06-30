@@ -3,6 +3,12 @@ import { Link, Route, Switch } from 'react-router-dom';
 
 
 export default class Bottom extends React.Component {
+
+
+    constructor(props) {
+        super(props);
+    }
+
     render() {
         return (
             <div className="text mini">

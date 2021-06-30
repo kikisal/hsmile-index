@@ -7,8 +7,8 @@ const style = {
     },
     
     logo: {
-        width:'187px',
-        height: '98px',
+        width: '218px',
+        height: '125px',
         background: `url(${Config.PUBLIC_ASSETS_URL}/pix/img/logo.png)`,
         backgroundRepeat: 'no-repeat',
         filter: 'drop-shadow(-2px -2px 0 #fff)',
